@@ -1,5 +1,5 @@
 import animeAPI from "../api/AnimeAPI";
-import { AnimeTopsInterface } from "../interfaces/GetAnimeTopsInterface'";
+import { AnimeTopsInterface } from "../interfaces/GetAnimeTopsInterface";
 
 
 export const getAnimeTops = async () => {

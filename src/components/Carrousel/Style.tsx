@@ -139,3 +139,8 @@ export const TextInfo = styled.h1`
        font-weight:bold;
     }
 `
+
+export const ButtonImage = styled.button`
+    background-color: transparent;
+    border: none;
+`

@@ -1,5 +1,5 @@
-import React from 'react'
 import { Routes,Route} from 'react-router-dom'
+import Anime from './screens/Anime/Anime'
 import Home from './screens/Home/Home'
 
 const App = () => {
@@ -10,10 +10,9 @@ const App = () => {
         element={<Home />}
       />
       <Route
-        path='/about'
-        element={<div>About</div>}
+        path='/Anime'
+        element={<Anime  />}
       />
-    
     </Routes>
   )
 }

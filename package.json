@@ -9,7 +9,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ionic/react": "^6.4.1",
     "axios": "^1.2.1",
+    "ionicons": "^6.0.4",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",
     "react": "^18.2.0",

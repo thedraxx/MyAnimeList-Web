@@ -1,15 +1,18 @@
 import { useState, useEffect } from 'react'
-import { Button, ContainerBanner, ContainerButtons, ContainerImageInfo, ContainerText, CustomImageGalery, TextInfo, TextTitle } from './Style';
-import { AnimeTopsInterface } from '../../interfaces/GetAnimeTopsInterface\'';
+import { Button, ButtonImage, ContainerBanner, ContainerButtons, ContainerImageInfo, ContainerText, CustomImageGalery, TextInfo, TextTitle } from './Style';
+import { AnimeTopsInterface } from '../../interfaces/GetAnimeTopsInterface';
 import animeAPI from '../../api/AnimeAPI';
-import './icons.css';
 import Loading from '../Loading/Loading';
+import { useNavigate } from 'react-router-dom';
+import { IonIcon } from '@ionic/react';
 
 const Carrousel = (): JSX.Element => {
     const [AnimeBanner, setAnimeBanner] = useState<AnimeTopsInterface>();
     const [increment, setIncrement] = useState<number>(0);
     const [disabled, setDisabled] = useState<boolean>(false);
     const [disabledMinus, setDisabledMinus] = useState<boolean>(false);
+
+    const navigate = useNavigate();
 
     const colors = [
         '#ff2424',
@@ -20,6 +23,10 @@ const Carrousel = (): JSX.Element => {
         '#0094fd',
         '#ff34da',
     ]
+
+    useEffect(() => {
+        getAnimeTops()
+    }, [])
 
     const incrementor = () => {
         if (increment > 6) {
@@ -44,10 +51,6 @@ const Carrousel = (): JSX.Element => {
         }
     }
 
-    useEffect(() => {
-        getAnimeTops()
-    }, [])
-
     const getAnimeTops = async () => {
         try {
             const resp = await animeAPI.get('top/anime');
@@ -56,6 +59,8 @@ const Carrousel = (): JSX.Element => {
             console.log({ error });
         }
     };
+
+
     return (
         !AnimeBanner ? <Loading /> : (
             <ContainerBanner color={colors[increment]}>
@@ -63,21 +68,30 @@ const Carrousel = (): JSX.Element => {
                     <Button
                         disabled={disabledMinus}
                         onClick={() => decrementor()}>
-                        <ion-icon name="caret-back-outline"></ion-icon>
+                        <IonIcon name="caret-back-outline"></IonIcon>
                     </Button>
                     <Button
                         disabled={disabled}
                         onClick={() => incrementor()}>
-                        <ion-icon name="caret-forward-outline"></ion-icon>
+                        <IonIcon name="caret-forward-outline"></IonIcon>
                     </Button>
                 </ContainerButtons>
+
                 <ContainerImageInfo>
-                    <CustomImageGalery src={AnimeBanner?.data[increment].images.webp.large_image_url} alt="Anime Banner" />
+                    <ButtonImage onClick={() => navigate("/Anime", { 
+                        state: {
+                            anime: AnimeBanner.data[increment]
+                        }
+
+                    })}>
+                        <CustomImageGalery src={AnimeBanner.data[increment].images.webp.large_image_url} alt="Anime Banner" />
+                    </ButtonImage>
                     <ContainerText>
-                        <TextTitle>{AnimeBanner?.data[increment].title}</TextTitle>
-                        <TextInfo>{AnimeBanner?.data[increment].synopsis.substring(0, 350).concat('...')}</TextInfo>
+                        <TextTitle>{AnimeBanner.data[increment].title}</TextTitle>
+                        <TextInfo>{AnimeBanner.data[increment].synopsis.substring(0, 350).concat('...')}</TextInfo>
                     </ContainerText>
                 </ContainerImageInfo>
+
             </ContainerBanner>
         )
     )

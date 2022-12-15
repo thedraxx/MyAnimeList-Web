@@ -1,31 +1,32 @@
 import { useState, useEffect } from 'react'
-import { Button, ContainerBanner, ContainerButtons, ContainerImageInfo, ContainerText, CustomImageGalery, TextInfo } from './Style';
+import { Button, ContainerBanner, ContainerButtons, ContainerImageInfo, ContainerText, CustomImageGalery, TextInfo, TextTitle } from './Style';
 import { AnimeTopsInterface } from '../../interfaces/GetAnimeTopsInterface\'';
 import animeAPI from '../../api/AnimeAPI';
+import './icons.css';
+import Loading from '../Loading/Loading';
 
-const Carrousel = ():JSX.Element => {
+const Carrousel = (): JSX.Element => {
     const [AnimeBanner, setAnimeBanner] = useState<AnimeTopsInterface>();
     const [increment, setIncrement] = useState<number>(0);
     const [disabled, setDisabled] = useState<boolean>(false);
-    const [disabledMinus, setDisabledMinus] = useState<boolean>(false)
+    const [disabledMinus, setDisabledMinus] = useState<boolean>(false);
 
     const colors = [
-        '#fd0000',
+        '#ff2424',
         '#9400fd',
         '#15c25d',
-        '#fdf000',
-        '#15fd00',
+        '#fd8700',
+        '#27d7ff',
         '#0094fd',
-        '#fd00cf',
-        '#00fd65',
+        '#ff34da',
     ]
 
     const incrementor = () => {
-        if (increment > 6 ){
+        if (increment > 6) {
             setDisabled(true)
         }
 
-        if (increment < 6 ){
+        if (increment < 6) {
             setDisabled(false)
             setIncrement(increment + 1)
         }
@@ -33,11 +34,11 @@ const Carrousel = ():JSX.Element => {
     }
 
     const decrementor = () => {
-        if (increment < 0 ){
+        if (increment < 0) {
             setDisabledMinus(true)
         }
 
-        if (increment > 0 ){
+        if (increment > 0) {
             setDisabledMinus(false)
             setIncrement(increment - 1)
         }
@@ -55,31 +56,32 @@ const Carrousel = ():JSX.Element => {
             console.log({ error });
         }
     };
-
-
     return (
-        
-        <ContainerBanner color={colors[increment]}>
-            <ContainerButtons>
-                <Button 
-                disabled={disabledMinus}
-                onClick={() => decrementor()}><h1>-</h1></Button>
-                <Button 
-                disabled={disabled}
-                onClick={() => incrementor()}><h1>+</h1></Button>
-            </ContainerButtons>
-            <ContainerImageInfo>
-            <CustomImageGalery src={AnimeBanner?.data[increment].images.webp.large_image_url} alt="Anime Banner" />
-            <ContainerText>
-            <TextInfo>{AnimeBanner?.data[increment].title}</TextInfo>
-            <TextInfo>hola hago memes</TextInfo>
-            </ContainerText>
-
-            </ContainerImageInfo>
-       
-       
-        </ContainerBanner>
+        !AnimeBanner ? <Loading /> : (
+            <ContainerBanner color={colors[increment]}>
+                <ContainerButtons>
+                    <Button
+                        disabled={disabledMinus}
+                        onClick={() => decrementor()}>
+                        <ion-icon name="caret-back-outline"></ion-icon>
+                    </Button>
+                    <Button
+                        disabled={disabled}
+                        onClick={() => incrementor()}>
+                        <ion-icon name="caret-forward-outline"></ion-icon>
+                    </Button>
+                </ContainerButtons>
+                <ContainerImageInfo>
+                    <CustomImageGalery src={AnimeBanner?.data[increment].images.webp.large_image_url} alt="Anime Banner" />
+                    <ContainerText>
+                        <TextTitle>{AnimeBanner?.data[increment].title}</TextTitle>
+                        <TextInfo>{AnimeBanner?.data[increment].synopsis.substring(0, 350).concat('...')}</TextInfo>
+                    </ContainerText>
+                </ContainerImageInfo>
+            </ContainerBanner>
+        )
     )
 }
 
 export default Carrousel
+

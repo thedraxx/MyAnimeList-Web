@@ -6,7 +6,6 @@ export const ContainerBanner = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #fd0000;
     flex-direction: column;
     padding: 120px;
     background-color: ${(props:any ) => props.color};
@@ -17,6 +16,11 @@ export const ContainerBanner = styled.div`
     background-repeat: no-repeat;
     background-attachment: fixed;
     transition: all 0.7s ease;
+
+    @media (max-width: 1600px) {
+        padding: 20px;
+    }
+
 `;
 
 export const CustomImageGalery = styled.img`
@@ -25,6 +29,15 @@ export const CustomImageGalery = styled.img`
     position: relative;
     border-radius: 25px;
     object-fit: cover;
+
+    @media (max-width: 1600px) {
+        width: 320px;
+        height: 500px;
+        position: relative;
+        border-radius: 25px;
+        object-fit: cover;
+        padding: 20px;
+    }
 `
 
 export const ContainerButtons = styled.div`
@@ -32,11 +45,20 @@ export const ContainerButtons = styled.div`
     justify-content: space-between;
     width: 100%;
     position: absolute;
+
+    @media (max-width: 1600px) {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        position: absolute;
+        z-index: 1;
+    }
+
 ` 
 
 export const Button = styled.button`
     width: 50px;
-    background-color: #5a5a5a;
+    background-color: transparent;
     border: none;
     outline: none;
     cursor: pointer;
@@ -47,13 +69,22 @@ export const Button = styled.button`
 export const ContainerImageInfo = styled.div`
     flex-direction: row;
     width:50%;
-    background-color: #080000;
     border-radius: 25px;
     padding: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: 20px;
+
+    @media (max-width: 1600px) {
+        width: 100%;
+        flex-direction: column;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
 `
 
 export const ContainerText  = styled.div`
@@ -62,16 +93,49 @@ export const ContainerText  = styled.div`
     justify-content: center;
     flex-direction: column;
     margin-left: 20px;
+    width: 100%;
+
+    @media (max-width: 1600px) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+        width: 90%;
+    }
 `
 
-export const TextInfo = styled.h1`
-    color: #fff;
-    font-size: 25px;
-    font-weight: 500;
+export const TextTitle = styled.h1`
+    color: #ffffff;
+    font-size: 45px;
+    font-weight: bold;
     margin: 0;
     padding: 0;
-    margin-left: 20px;
     text-align: center;
     justify-content: center;
     align-items: center;
+
+    @media (max-width: 1600px) {
+        font-size: 20px;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin-top: 20px;
+    }
+`
+
+export const TextInfo = styled.h1`
+    color: #ffffff;
+    font-size: 25px;
+    font-weight:550;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+
+    @media (max-width: 1600px) {
+       display: none; 
+       font-weight:bold;
+    }
 `

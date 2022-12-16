@@ -29,6 +29,7 @@ export const CustomImageGalery = styled.img`
     position: relative;
     border-radius: 25px;
     object-fit: cover;
+    transition: all 0.3s ease;
 
     @media (max-width: 1600px) {
         width: 320px;
@@ -95,6 +96,7 @@ export const ContainerText  = styled.div`
     margin-left: 20px;
     width: 100%;
 
+
     @media (max-width: 1600px) {
         display: flex;
         align-items: center;
@@ -113,6 +115,7 @@ export const TextTitle = styled.h1`
     text-align: center;
     justify-content: center;
     align-items: center;
+    transition: all 0.3s ease;
 
     @media (max-width: 1600px) {
         font-size: 20px;
@@ -120,6 +123,7 @@ export const TextTitle = styled.h1`
         align-items: center;
         text-align: center;
         margin-top: 20px;
+        transition: all 0.3s ease;
     }
 `
 

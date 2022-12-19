@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Colors } from '../../utilities/Colors';
 
 export const SuperContainer = styled.div`
     display: flex;
@@ -42,7 +43,9 @@ export const Button = styled.button`
     background-color: transparent;
     cursor: pointer;
     &:hover{
-        transform: scale(1.1);
+        background-color: ${Colors.search};
+        border-radius: 5px;
+        padding: 1rem;
     }
 
     &:transition{

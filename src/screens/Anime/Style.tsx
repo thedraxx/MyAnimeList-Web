@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Colors } from '../../utilities/Colors';
 
 export const ContainerAnime = styled.div`
 flex: 1;
@@ -14,7 +15,7 @@ display: flex;
 flex-direction: column;
 width: 100%;
 height: 100%;
-background-color: #000000;
+background-color: ${Colors.tertiary};
 padding-top: 2rem;
 padding-bottom: 2rem;
 `
@@ -25,7 +26,7 @@ display: flex;
 flex-direction: column;
 width: 50%;
 height: 100%;
-background-color: #000000;
+background-color: ${Colors.tertiary};
 justify-content: center;
 align-items: center;
 margin: 0 auto;
@@ -42,7 +43,7 @@ display: flex;
 flex-direction: column;
 width: 100%;
 height: 100%;
-background-color: #050505;
+background-color: ${Colors.tertiary};
 justify-content: left;
 align-items: left;
 margin: 0 auto;
@@ -59,7 +60,7 @@ text-align: left;
 `
 
 export const TextEpisodes = styled.h3`
-color: #5f5f5f;
+color: ${Colors.gray};
 font-size: 1rem;
 font-weight: 700;
 justify-content: left;
@@ -76,7 +77,7 @@ align-self: flex-start;
 `
 
 export const TextMedia = styled.h1`
-color: #ffffff;
+color: ${Colors.white};
 font-size: 1rem;
 font-weight: 700;
 justify-content: left;
@@ -96,7 +97,7 @@ padding-bottom: 1rem;
 `
 
 export const TextSynopsis = styled.h1`
-color: #ffffff;
+color: ${Colors.white};
 font-size: 1rem;
 font-weight: 500;
 justify-content: left;
@@ -130,7 +131,7 @@ flex-wrap: wrap;
 `
 
 export const TextGenre = styled.h1`
-color: #ffffff;
+color: ${Colors.white};
 font-size: 1.1rem;
 font-weight: 400;
 justify-content: center;
@@ -143,7 +144,7 @@ justify-content: center;
 align-items: center;
 align-self: center;
 padding: 0.5rem;
-background-color: #1a1a1a;
+color: ${Colors.primary};
 margin-left: 1rem;
 `
 
@@ -154,5 +155,5 @@ justify-content: center;
 align-items: center;
 align-self: center;
 padding: 1rem;
-background-color: #000000;
+tertiary: '#000000',
 `

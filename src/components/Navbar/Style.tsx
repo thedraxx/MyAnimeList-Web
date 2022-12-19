@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Colors } from '../../utilities/Colors';
 
 export const ContainerNavBar = styled.div`
     display: flex;
@@ -6,7 +7,7 @@ export const ContainerNavBar = styled.div`
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    background-color: #232323;
+    background-color: ${Colors.primary};
     padding: 0 20px;
     height: 60px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -29,15 +30,20 @@ export const ContainerLogo = styled.div`
     flex-direction: row;
     justify-content: center;
     align-items: center;
-
+    margin: 0 0 0 100px;
     
 `
 
 export const Text = styled.h1`
-    font-size: 25px;
-    font-weight: 600;
-    color: #ffffff;
+    font-size: 35px;
+    font-weight:600;
+    color: ${Colors.white};
     justify-content: center;
     align-items: center;
     display: flex;
+    margin: 0 0 0 10px;
+
+    &:hover{
+        color: ${Colors.secondary};
+    }
 `

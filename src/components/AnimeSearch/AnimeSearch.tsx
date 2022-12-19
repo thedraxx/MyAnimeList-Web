@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import animeAPI from '../../api/AnimeAPI'
 import { AnimeSearchInterface, DatumSearch } from '../../interfaces/AnimeSearchInterface'
 import SimilarAnimes from '../SimilarAnimes/SimilarAnimes'
-import { Button, ContainerAnimeLikeThis, Image, SuperContainer } from './Style'
+import { Button, ContainerAnimeLikeThis, Image, SuperContainer, Title } from './Style'
 import { useNavigate } from 'react-router-dom';
 
 interface AnimeSearchProps {
@@ -29,9 +29,8 @@ const AnimeSearch = ({ name, PressEnter }: AnimeSearchProps) => {
     }
 
     return (
-        !name ? <h1>{name}</h1> : (
+        name === '' ? <h1>Search Anime!</h1> : (
             <SuperContainer>
-
                 <ContainerAnimeLikeThis>
                     {
                         animeSearchNow?.map((anime, index) => {
@@ -44,6 +43,7 @@ const AnimeSearch = ({ name, PressEnter }: AnimeSearchProps) => {
                                     })}
                                 >
                                     <Image key={anime.mal_id} src={anime.images.webp.large_image_url} alt={anime.title} />
+                                    <Title>{anime.title}</Title>
                                 </Button>
                             )
                         })

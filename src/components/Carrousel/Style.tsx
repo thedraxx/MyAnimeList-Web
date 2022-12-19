@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Colors } from '../../utilities/Colors';
 
 export const ContainerBanner = styled.div`
     width: 100%;
@@ -107,7 +108,7 @@ export const ContainerText  = styled.div`
 `
 
 export const TextTitle = styled.h1`
-    color: #ffffff;
+    color: ${Colors.white};
     font-size: 45px;
     font-weight: bold;
     margin: 0;
@@ -128,7 +129,7 @@ export const TextTitle = styled.h1`
 `
 
 export const TextInfo = styled.h1`
-    color: #ffffff;
+    color: ${Colors.white};
     font-size: 25px;
     font-weight:550;
     margin: 0;

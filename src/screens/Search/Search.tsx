@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
-import { Button, ContainerSearch, Inputs, ContainerAnimeSearch } from './Style';
+import {ContainerSearch, Inputs, ContainerAnimeSearch, Border } from './Style';
 import { useForm } from '../../components/hooks/useForm'
 import AnimeSearch from '../../components/AnimeSearch/AnimeSearch'
 
 const Search = () => {
-  const [PressEnter, setPressEnter] = useState(false)
+  const [PressEnter, setPressEnter] = useState<boolean>(false)
   const [animeBusqueda, setAnimeBusqueda] = useState<string>('')
+  const [isEnter, setIsEnter] = useState<boolean>(false)
 
   const { name,onChange } = useForm(
     {
@@ -25,20 +26,20 @@ const Search = () => {
 
   return (
     <ContainerSearch>
-       <label>
         <Inputs
           type="text"
-          placeholder="Search"
+          placeholder="Search..."
           value={name}
           onChange={value => onChange(value.target.value, 'name')}
+          onFocus={() => setIsEnter(true)}
+          onBlur={() => setIsEnter(false)}
           onKeyDown={(e) => {
             if (e.key === 'Enter') {
               PresOnKeyDown()
             }
           }}
         />
-      </label>
-
+        <Border isEnter={isEnter}/>
       {
         PressEnter && (
           <ContainerAnimeSearch>
@@ -46,11 +47,6 @@ const Search = () => {
           </ContainerAnimeSearch>
         )
       }
-
-
-
-
-
     </ContainerSearch >
 
   )

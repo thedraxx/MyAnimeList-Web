@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Colors } from '../../utilities/Colors';
 
 export const ContainerBanner = styled.div`
     width: 100%;
@@ -16,7 +17,7 @@ export const ContainerBanner = styled.div`
     background-repeat: no-repeat;
     background-attachment: fixed;
     transition: all 0.7s ease;
-    background-color: #000;
+    background-color: ${Colors.tertiary};
 
     @media (max-width: 1600px) {
         padding: 20px;

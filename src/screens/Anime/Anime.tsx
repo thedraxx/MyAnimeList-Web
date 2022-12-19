@@ -1,57 +1,94 @@
-import React from 'react'
+import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom';
 import { Datum } from '../../interfaces/GetAnimeTopsInterface';
-import { ContainerAnime, ContainerGenre, ContainerInfo, ContainerLeft, ContainerStars, ContainerSynopsis, ContainerTextGenre, SuperContainerInfoAnime, TextEpisodes, TextGenre, TextMedia, TextName, TextSynopsis } from './Style';
+import { ContainerAnime, ContainerGenre, ContainerInfo, ContainerLeft, ContainerSimilarAnimes, ContainerStars, ContainerSynopsis, ContainerTextGenre, ContainerVideo, SuperContainerInfoAnime, TextEpisodes, TextGenre, TextMedia, TextName, TextSynopsis } from './Style';
 import CarrouselAnime from '../../components/Cover/Cover';
-import { IonButton, IonIcon } from '@ionic/react';
+import { IonIcon } from '@ionic/react';
+import ReactPlayer from 'react-player';
+import SimilarAnimes from '../../components/SimilarAnimes/SimilarAnimes';
+import animeAPI from '../../api/AnimeAPI';
+import Loading from '../../components/Loading/Loading';
 
 interface CustomizedState {
-  anime: Datum
+  anime: string /* Recibe Id of the ANIME */
 }
 
-
 const Anime = () => {
+  const [animeInfo, setAnimeInfo] = useState<Datum>()
   const location = useLocation()
   const state = location.state as CustomizedState
 
+  console.log(state.anime)
 
-  const rating = Math.round(state.anime.score)
+  useEffect(() => {
+    getAnime()
+  }, [state])
 
+
+  const getAnime = async () => {
+    try {
+      const resp = await animeAPI.get(`anime/${state.anime}`);
+      setAnimeInfo(resp.data.data);
+    } catch (error) {
+      console.log({ error });
+    }
+  }
 
   return (
-    <ContainerAnime>
-      <CarrouselAnime anime={state.anime} />
-      <SuperContainerInfoAnime>
-        <ContainerInfo>
-          <ContainerLeft>
-            <TextName>
-              {state.anime.title}
-            </TextName>
-            <TextEpisodes>
-              {state.anime.episodes} Episodes
-            </TextEpisodes>
-            <ContainerStars>
-              {
-                [...Array(rating)].map((e, i) => {
-                  return <IonIcon name="star" color="light" />
-                })
-              }
-              <TextMedia>Media: {state.anime.score}</TextMedia>
-            </ContainerStars>
-            <ContainerSynopsis>
-              <TextSynopsis>
-                {state.anime.synopsis}
-              </TextSynopsis>
-            </ContainerSynopsis>
-            <ContainerGenre>
-                {state.anime.genres.map((genre, index) => {
-                  return <ContainerTextGenre key={index}><TextGenre>{genre.name}</TextGenre></ContainerTextGenre>
-                })}
-            </ContainerGenre>
-          </ContainerLeft>
-        </ContainerInfo>
-      </SuperContainerInfoAnime>
-    </ContainerAnime>
+    <>
+      {
+        !animeInfo ? <Loading /> : (
+          <>
+            <ContainerAnime>
+              <CarrouselAnime anime={animeInfo} />
+              <SuperContainerInfoAnime>
+                <ContainerInfo>
+                  <ContainerLeft>
+                    <TextName>
+                      {animeInfo.title}
+                    </TextName>
+                    <TextEpisodes>
+                      {animeInfo.episodes} Episodes
+                    </TextEpisodes>
+                    <ContainerStars>
+                      {
+                        [...Array(Math.round(animeInfo.score))].map((e, i) => {
+                          return <IonIcon name="star" color="light" />
+                        })
+                      }
+                      <TextMedia>Media: {animeInfo.score}</TextMedia>
+                    </ContainerStars>
+                    <ContainerSynopsis>
+                      <TextSynopsis>
+                        {animeInfo.synopsis}
+                      </TextSynopsis>
+                      <ContainerVideo>
+                        <ReactPlayer
+                          url={animeInfo.trailer.url}
+                          controls
+                          width='450px'
+                          height='100%'
+                        />
+                      </ContainerVideo>
+                    </ContainerSynopsis>
+                    <ContainerGenre>
+                      {animeInfo.genres.map((genre, index) => {
+                        return <ContainerTextGenre key={index}><TextGenre>{genre.name}</TextGenre></ContainerTextGenre>
+                      })}
+                    </ContainerGenre>
+                  </ContainerLeft>
+                </ContainerInfo>
+              </SuperContainerInfoAnime>
+            </ContainerAnime>
+            <ContainerSimilarAnimes>
+              <SimilarAnimes animes={animeInfo} />
+            </ContainerSimilarAnimes>
+          </>
+        )
+      }
+
+
+    </>
   )
 }
 

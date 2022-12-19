@@ -1,7 +1,8 @@
 import { Routes,Route} from 'react-router-dom'
 import Anime from './screens/Anime/Anime'
 import Home from './screens/Home/Home'
-
+import './App.css'
+import Search from './screens/Search/Search';
 const App = () => {
   return (
     <Routes>
@@ -12,6 +13,10 @@ const App = () => {
       <Route
         path='/Anime'
         element={<Anime  />}
+      />
+       <Route
+        path='/Search'
+        element={<Search  />}
       />
     </Routes>
   )

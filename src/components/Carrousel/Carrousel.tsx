@@ -80,7 +80,7 @@ const Carrousel = (): JSX.Element => {
                 <ContainerImageInfo>
                     <ButtonImage onClick={() => navigate("/Anime", { 
                         state: {
-                            anime: AnimeBanner.data[increment]
+                            anime: AnimeBanner.data[increment].mal_id
                         }
 
                     })}>

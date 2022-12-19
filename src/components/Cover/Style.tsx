@@ -9,12 +9,14 @@ export const ContainerBanner = styled.div`
     flex-direction: column;
     background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${(props: { background: string }) => props.background } );
     filter: blur(10px);
+    transform: scale(1); 
     object-fit: cover;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     transition: all 0.7s ease;
+    background-color: #000;
 
     @media (max-width: 1600px) {
         padding: 20px;
@@ -23,14 +25,15 @@ export const ContainerBanner = styled.div`
 `;
 
 export const CustomImageGalery = styled.img`
-    width: 350px;
-    height: 500px;
+    width: 300px;
+    height: 450px;
     position: relative;
     border-radius: 25px;
     object-fit: cover;
     transition: all 0.3s ease;
     z-index: 1;
     filter: blur(0px);
+    margin-top: 10vh;
 
     @media (max-width: 1600px) {
         width: 320px;

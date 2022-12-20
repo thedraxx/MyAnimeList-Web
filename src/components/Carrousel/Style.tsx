@@ -149,3 +149,7 @@ export const ButtonImage = styled.button`
     background-color: transparent;
     border: none;
 `
+
+export const divs = styled.div`
+    display: flex;
+`

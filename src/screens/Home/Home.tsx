@@ -1,15 +1,18 @@
 import React from 'react'
-import Slider from "react-slick";
 import Carrousel from '../../components/Carrousel/Carrousel';
 import { ContainerHome } from './Style';
-import Recomendations from '../../components/Recomendations/Recomendations';
+import Upcoming from '../../components/Upcoming/Upcoming';
+import TopAnime from '../../components/TopAnime/TopAnime';
+import Banner from '../../components/Banner/Banner';
 
 const Home = () => {
 
   return (
     <ContainerHome>
         <Carrousel />
-        <Recomendations />
+        <Upcoming />
+        <Banner />    
+        <TopAnime />
     </ContainerHome>
   )
 }

@@ -31,10 +31,7 @@ const SimilarAnimes = (animes:Animes) => {
   return (
     <SuperContainer>
       <h1>Similar Animes</h1>
-
-
     <ContainerAnimeLikeThis>
-
       {
         anime?.data.map((anime, index) => {
           return (
@@ -51,10 +48,6 @@ const SimilarAnimes = (animes:Animes) => {
         })
         
       }
-
-
-
-
     </ContainerAnimeLikeThis>
     </SuperContainer>
   )

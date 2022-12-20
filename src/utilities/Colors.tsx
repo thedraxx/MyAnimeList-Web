@@ -6,4 +6,5 @@ export const Colors = {
     quaternary: '#213944',
     gray: '#8e8e8e',
     white: '#ffffff',
+    lightBlue: '#00a8ff',
 }

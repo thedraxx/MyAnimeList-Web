@@ -14,10 +14,10 @@ export const SuperContainer = styled.div`
 
 export const ContainerAnimeLikeThis = styled.div`
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-gap: 1rem;
     margin: 1rem 0;
-    padding: 1rem;
+    padding: 0.5rem;
     background-color: #040404;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
@@ -31,8 +31,7 @@ export const ContainerAnimeLikeThis = styled.div`
 
 
 export const Image = styled.img`
-    width: 85%;
-    height: 100%;
+    width: 65%;
     border-radius: 5px;
 `
 
@@ -45,7 +44,7 @@ export const Button = styled.button`
     &:hover{
         background-color: ${Colors.search};
         border-radius: 5px;
-        padding: 1rem;
+        padding: 0.5rem;
     }
 
     &:transition{

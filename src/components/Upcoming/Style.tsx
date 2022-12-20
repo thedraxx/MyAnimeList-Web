@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Colors } from '../../utilities/Colors';
 
 export const ContainerRecomendations = styled.div`
-    justify-content: center;
+   justify-content: center;
     align-items: center;
     display: flex;
     flex-direction: column;
@@ -18,16 +18,27 @@ export const Container = styled.div`
     align-items: center;
     background-color: ${Colors.tertiary};
     padding: 2vh;
+
+    @media (max-width: 1600px){
+        width: 100%;
+        height: 100%;
+        padding: 0vh;
+    }
 `
 
 
 export const ContainerDivImg = styled.div`
-    width: 50%;
+   width: 50%;
     justify-content: center;
     align-items: center;
     background-color: ${Colors.tertiary};
     padding: 3vh;
     flex-direction: row;
+
+    @media (max-width: 1600px){
+        width: 100%;
+        padding: 3vh;
+    }
 `
 
 export const Image = styled.img`

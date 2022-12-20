@@ -1,8 +1,16 @@
 import styled from 'styled-components';
+import { Colors } from '../../utilities/Colors';
 
 export const ImageList = styled.img`
     width:  150px;
     height: 200px;;
+
+    @media (max-width: 1600px){
+        width:  100%;
+        height: auto;
+    }
+
+
 `;
 
 export const Button = styled.button`
@@ -14,4 +22,9 @@ export const Button = styled.button`
     font-size: 2rem;
     margin: 0 1rem;
     transition: 0.3s ease-in-out;
+`
+export const DivList = styled.div`
+    width: 100%;
+    height: 100%;
+    background-color: ${Colors.tertiary};
 `

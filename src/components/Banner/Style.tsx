@@ -9,10 +9,15 @@ export const Container = styled.div`
     position: relative;
     padding: 0 5rem;
     margin-top: 4rem;
+
+    @media screen and (max-width: 1600px) {
+        width: 100%;
+        padding: 0rem;
+    }
 `;
 
 export const Image = styled.img`
-    width: 20%;
+    width: 100%;
     height: 520px;
     justify-self: center;
     align-self: center;
@@ -21,4 +26,20 @@ export const Image = styled.img`
     object-fit: cover;
     border-radius: 10px;
 
+    @media screen and (max-width: 768px) {
+        width: 100%;
+        height: 300px;
+    }
+
+`
+
+export const Button = styled.button`
+    width: 20%;
+    border: none;
+    background: none;
+    cursor: pointer;
+
+    @media screen and (max-width: 1600px) {
+        width: 100%;
+    }
 `

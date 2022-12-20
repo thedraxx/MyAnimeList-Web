@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
 import { Datum } from "../../interfaces/AnimeRec";
-import { Button, ImageList } from "./Style";
+import { Button, DivList, ImageList } from "./Style";
 import { useNavigate } from 'react-router-dom';
 
 export interface Anime {
@@ -16,6 +16,16 @@ const List = ({ Anime }: Anime) => {
     centerPadding: "60px",
     slidesToShow: 5,
     swipeToSlide: true,
+    responsive:[
+      {
+        breakpoint: 500,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          arrows: false,
+        }
+      },
+    ],
     afterChange: function (index: number) {
       console.log(
         `Slider Changed to: ${index + 1}, background: #222; color: #bada55`
@@ -24,10 +34,10 @@ const List = ({ Anime }: Anime) => {
   };
 
   return (
-    <div>
+    <>
       <Slider {...settings}>
         {Anime.map((anime) => (
-          <div key={anime.mal_id}>
+          <DivList key={anime.mal_id}>
             <Button onClick={() => navigate("/Anime", {
               state: {
                 anime: anime.mal_id
@@ -36,11 +46,11 @@ const List = ({ Anime }: Anime) => {
             })}>
               <ImageList src={anime.images.webp.large_image_url} alt={anime.title} />
             </Button>
-          </div>
+          </DivList>
         ))
         }
       </Slider >
-    </div >
+    </ >
   );
 }
 

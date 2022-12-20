@@ -22,16 +22,18 @@ export const Button = styled.button`
     border: none;
     outline: none;
     cursor: pointer;
+    display: flex;
 `
 
 
 export const ContainerLogo = styled.div`
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    align-items: center;
     margin: 0 0 0 100px;
-    
+
+    @media (max-width: 1600px){
+        margin: 0px;   
+    }
 `
 
 export const Text = styled.h1`
@@ -42,6 +44,10 @@ export const Text = styled.h1`
     align-items: center;
     display: flex;
     margin: 0 0 0 10px;
+
+    @media (max-width: 1600px){
+        font-size: 25px;
+    }
 
     &:hover{
         color: ${Colors.secondary};

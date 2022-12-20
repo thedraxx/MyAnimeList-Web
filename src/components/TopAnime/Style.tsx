@@ -18,6 +18,12 @@ export const Container = styled.div`
     align-items: center;
     background-color: ${Colors.tertiary};
     padding: 2vh;
+
+    @media (max-width: 1600px){
+        width: 100%;
+        height: 100%;
+        padding: 0vh;
+    }
 `
 
 
@@ -28,11 +34,11 @@ export const ContainerDivImg = styled.div`
     background-color: ${Colors.tertiary};
     padding: 3vh;
     flex-direction: row;
-`
 
-export const Image = styled.img`
-    width:  150px;
-    height: auto;
+    @media (max-width: 1600px){
+        width: 100%;
+        padding: 3vh;
+    }
 `
 
 export const Title = styled.h1`
@@ -48,3 +54,4 @@ export const Linear2 = styled.div`
     background-color: ${Colors.secondary};
     margin: 2vh 0;
 `
+

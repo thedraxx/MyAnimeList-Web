@@ -77,8 +77,8 @@ const Anime = () => {
                                 <ReactPlayer
                                   url={animeInfo.trailer.url}
                                   controls
-                                  width='400px'
-                                  height='400px'
+                                  width='500px'
+                                  height='500px'
                                 />
                             }
 

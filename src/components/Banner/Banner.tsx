@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import animeAPI from '../../api/AnimeAPI'
 import Loading from '../Loading/Loading'
-import { Button, Container, Image } from './Style'
-import { AnimeRandomInterface } from '../../interfaces/AnimeRandomInterface'
+import { Button, Container, ContainerTitleInfo, Image, Title, TitleAnime } from './Style'
 import { useNavigate } from 'react-router-dom';
+import { AnimeRecomendations } from '../../interfaces/AnimeRecomendations'
 
 const Banner = () => {
-    const [AnimeBanner, setAnimeBanner] = useState<AnimeRandomInterface>()
+    const [AnimeBanner, setAnimeBanner] = useState<AnimeRecomendations>()
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -17,7 +17,7 @@ const Banner = () => {
 
     const getAnimeBanner = async () => {
         try {
-            const resp = await animeAPI.get(`random/anime`);
+            const resp = await animeAPI.get(`recommendations/anime`);
             setAnimeBanner(resp.data);
         } catch (error) {
             console.log({ error });
@@ -31,12 +31,16 @@ const Banner = () => {
                         <Button
                             onClick={() => navigate("/Anime", { 
                                 state: {
-                                    anime: AnimeBanner.data.mal_id
+                                    anime: AnimeBanner?.data[0].entry[0].mal_id
                                 }
                             })}
                         >
-                        <Image src={AnimeBanner?.data.images.webp.large_image_url} alt={AnimeBanner.data.title} />
+                        <Image src={AnimeBanner?.data[0].entry[0].images.webp.large_image_url} alt={AnimeBanner?.data[0].entry[0].title} />
                         </Button>
+                        <ContainerTitleInfo>
+                        <Title>Anime of The day</Title>
+                        <TitleAnime>{AnimeBanner?.data[0].entry[0].title}</TitleAnime>
+                        </ContainerTitleInfo>
                     </Container>
                 )
             }

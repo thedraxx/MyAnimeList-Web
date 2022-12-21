@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 import { Colors } from '../../utilities/Colors';
 
+interface Props {
+    isEnter: boolean;
+}
+
 export const ContainerSearch = styled.div`
     display: flex;
     width: 100%;
@@ -56,7 +60,7 @@ export const ContainerAnimeSearch = styled.div`
     justify-content: center;
 `
 
-export const Border = styled.div`
+export const Border = styled.div<Props>`
     width: 50%;
     height: 0.2rem;
     background-color: ${props => props.isEnter ? Colors.secondary : Colors.search};

@@ -75,6 +75,7 @@ const Anime = () => {
                             {
                               animeInfo.trailer === null ? <div /> :
                                 <ReactPlayer
+                                  // @ts-ignore
                                   url={animeInfo.trailer.url}
                                   controls
                                   width='500px'

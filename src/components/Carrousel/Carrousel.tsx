@@ -4,7 +4,7 @@ import { AnimeTopsInterface } from '../../interfaces/GetAnimeTopsInterface';
 import animeAPI from '../../api/AnimeAPI';
 import Loading from '../Loading/Loading';
 import { useNavigate } from 'react-router-dom';
-import { IonIcon } from '@ionic/react';
+import { FaAngleRight,FaAngleLeft } from "react-icons/fa";
 
 const Carrousel = (): JSX.Element => {
     const [AnimeBanner, setAnimeBanner] = useState<AnimeTopsInterface>();
@@ -68,12 +68,12 @@ const Carrousel = (): JSX.Element => {
                     <Button
                         disabled={disabledMinus}
                         onClick={() => decrementor()}>
-                        <IonIcon name="caret-back-outline"></IonIcon>
+                        <FaAngleLeft />
                     </Button>
                     <Button
                         disabled={disabled}
                         onClick={() => incrementor()}>
-                        <IonIcon name="caret-forward-outline"></IonIcon>
+                        <FaAngleRight />
                     </Button>
                 </ContainerButtons>
 

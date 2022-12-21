@@ -66,6 +66,10 @@ export const Button = styled.button`
     cursor: pointer;
     border-radius: 20px;
     padding: 10px;
+
+    @media (max-width: 1600px) {
+        width:60px;
+    }
 `
 
 export const ContainerImageInfo = styled.div`

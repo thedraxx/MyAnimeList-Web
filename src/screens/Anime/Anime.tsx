@@ -3,11 +3,11 @@ import { useLocation } from 'react-router-dom';
 import { Datum } from '../../interfaces/GetAnimeTopsInterface';
 import { ContainerAnime, ContainerGenre, ContainerInfo, ContainerLeft, ContainerSimilarAnimes, ContainerStars, ContainerSynopsis, ContainerTextGenre, ContainerVideo, DivNothing, SuperContainerInfoAnime, TextEpisodes, TextGenre, TextMedia, TextName, TextSynopsis } from './Style';
 import CarrouselAnime from '../../components/Cover/Cover';
-import { IonIcon } from '@ionic/react';
 import ReactPlayer from 'react-player';
 import SimilarAnimes from '../../components/SimilarAnimes/SimilarAnimes';
 import animeAPI from '../../api/AnimeAPI';
 import Loading from '../../components/Loading/Loading';
+import { AiFillStar } from 'react-icons/ai';
 
 interface CustomizedState {
   anime: string /* Recibe Id of the ANIME */
@@ -56,7 +56,7 @@ const Anime = () => {
                       {
                         animeInfo.score === null ? <TextMedia>Media: Unknown</TextMedia> :
                           [...Array(Math.round(animeInfo.score))].map((e, i) => {
-                            return <IonIcon name="star" color="light" />
+                            return <AiFillStar color="white" />
                           })
                       }
                       <TextMedia>Media: {animeInfo.score}</TextMedia>
@@ -78,8 +78,8 @@ const Anime = () => {
                                   // @ts-ignore
                                   url={animeInfo.trailer.url}
                                   controls
-                                  width='500px'
-                                  height='500px'
+                                  width='455px'
+                                  height='455px'
                                 />
                             }
 

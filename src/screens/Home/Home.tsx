@@ -4,6 +4,7 @@ import { ContainerHome } from './Style';
 import Upcoming from '../../components/Upcoming/Upcoming';
 import TopAnime from '../../components/TopAnime/TopAnime';
 import Banner from '../../components/Banner/Banner';
+import Footer from '../../components/Footer/Footer';
 
 const Home = () => {
 
@@ -13,6 +14,7 @@ const Home = () => {
         <Upcoming />
         <Banner />    
         <TopAnime />
+        <Footer />
     </ContainerHome>
   )
 }

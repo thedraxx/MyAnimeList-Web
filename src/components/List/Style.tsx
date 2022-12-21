@@ -28,3 +28,9 @@ export const DivList = styled.div`
     height: 100%;
     background-color: ${Colors.tertiary};
 `
+
+export const TitleAnime = styled.h1`
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: ${Colors.white};
+`

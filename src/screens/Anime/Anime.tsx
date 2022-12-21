@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom';
 import { Datum } from '../../interfaces/GetAnimeTopsInterface';
-import { ContainerAnime, ContainerGenre, ContainerInfo, ContainerLeft, ContainerSimilarAnimes, ContainerStars, ContainerSynopsis, ContainerTextGenre, ContainerVideo, SuperContainerInfoAnime, TextEpisodes, TextGenre, TextMedia, TextName, TextSynopsis } from './Style';
+import { ContainerAnime, ContainerGenre, ContainerInfo, ContainerLeft, ContainerSimilarAnimes, ContainerStars, ContainerSynopsis, ContainerTextGenre, ContainerVideo, DivNothing, SuperContainerInfoAnime, TextEpisodes, TextGenre, TextMedia, TextName, TextSynopsis } from './Style';
 import CarrouselAnime from '../../components/Cover/Cover';
 import { IonIcon } from '@ionic/react';
 import ReactPlayer from 'react-player';
@@ -48,29 +48,45 @@ const Anime = () => {
                       {animeInfo.title}
                     </TextName>
                     <TextEpisodes>
-                      {animeInfo.episodes} Episodes
+                      {
+                        animeInfo.episodes === null ? 'Unknown Episodes' : `${animeInfo.episodes} Episodes`
+                      }
                     </TextEpisodes>
                     <ContainerStars>
                       {
-                        [...Array(Math.round(animeInfo.score))].map((e, i) => {
-                          return <IonIcon name="star" color="light" />
-                        })
+                        animeInfo.score === null ? <TextMedia>Media: Unknown</TextMedia> :
+                          [...Array(Math.round(animeInfo.score))].map((e, i) => {
+                            return <IonIcon name="star" color="light" />
+                          })
                       }
                       <TextMedia>Media: {animeInfo.score}</TextMedia>
                     </ContainerStars>
-                    <ContainerSynopsis>
-                      <TextSynopsis>
-                        {animeInfo.synopsis}
-                      </TextSynopsis>
-                      <ContainerVideo>
-                        <ReactPlayer
-                          url={animeInfo.trailer.url}
-                          controls
-                          width='450px'
-                          height='100%'
-                        />
-                      </ContainerVideo>
-                    </ContainerSynopsis>
+
+                    {
+                      !animeInfo.synopsis ? <DivNothing /> :
+                        <ContainerSynopsis>
+                          <TextSynopsis>
+                            {
+                              animeInfo.synopsis === null ? null : animeInfo.synopsis
+                            }
+
+                          </TextSynopsis>
+                          <ContainerVideo>
+                            {
+                              animeInfo.trailer === null ? <div /> :
+                                <ReactPlayer
+                                  url={animeInfo.trailer.url}
+                                  controls
+                                  width='400px'
+                                  height='400px'
+                                />
+                            }
+
+                          </ContainerVideo>
+                        </ContainerSynopsis>
+                    }
+
+
                     <ContainerGenre>
                       {animeInfo.genres.map((genre, index) => {
                         return <ContainerTextGenre key={index}><TextGenre>{genre.name}</TextGenre></ContainerTextGenre>

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
 import { Datum } from "../../interfaces/AnimeRec";
-import { Button, DivList, ImageList } from "./Style";
+import { Button, DivList, ImageList, TitleAnime } from "./Style";
 import { useNavigate } from 'react-router-dom';
 
 export interface Anime {
@@ -21,6 +21,14 @@ const List = ({ Anime }: Anime) => {
         breakpoint: 500,
         settings: {
           slidesToShow: 2,
+          slidesToScroll: 1,
+          arrows: false,
+        }
+      },
+      {
+        breakpoint: 800,
+        settings: {
+          slidesToShow: 3,
           slidesToScroll: 1,
           arrows: false,
         }
@@ -45,6 +53,7 @@ const List = ({ Anime }: Anime) => {
 
             })}>
               <ImageList src={anime.images.webp.large_image_url} alt={anime.title} />
+              <TitleAnime>{anime.title.substring(0,50).concat('...')}</TitleAnime>
             </Button>
           </DivList>
         ))

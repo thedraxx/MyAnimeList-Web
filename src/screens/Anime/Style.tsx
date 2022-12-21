@@ -83,7 +83,7 @@ font-weight: 700;
 justify-content: left;
 align-items: left;
 align-self: flex-start;
-margin-left: 1rem;
+margin-left: 0.3rem;
 `
 
 export const ContainerSynopsis = styled.div`
@@ -111,8 +111,9 @@ flex-direction: row;
 justify-content: right;
 align-items: right;
 align-self: right;
-padding-bottom: 1rem;
-margin-left: 1.2rem;
+padding-bottom: 0rem;
+margin-left: 5rem;
+
 
 @media (max-width: 1600px) {
     display: none;
@@ -155,5 +156,15 @@ justify-content: center;
 align-items: center;
 align-self: center;
 padding: 1rem;
-tertiary: '#000000',
+tertiary: '#000000';
+`
+
+export const DivNothing = styled.div`
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+align-self: center;
+padding: 0;
+background-color: ${Colors.white};
 `

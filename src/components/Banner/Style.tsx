@@ -26,8 +26,8 @@ export const Image = styled.img`
     object-fit: cover;
     border-radius: 10px;
 
-    @media screen and (max-width: 768px) {
-        width: 100%;
+    @media screen and (max-width: 1600px) {
+        width: 50%;
         height: 300px;
     }
 

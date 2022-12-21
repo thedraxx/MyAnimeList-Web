@@ -19,8 +19,11 @@ export const ContainerBanner = styled.div`
     transition: all 0.7s ease;
     background-color: ${Colors.tertiary};
 
-    @media (max-width: 1600px) {
-        padding: 20px;
+    @media (min-width: 800px) and (max-width: 1000px) {
+        height: 70vh;
+    }
+    @media (min-width: 1000px) and (max-width: 1900px) {
+        height: 75vh;
     }
 
 `;

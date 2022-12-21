@@ -11,7 +11,7 @@ const Upcoming = () => {
   useEffect(() => {
     setTimeout(() => {
       getAnimeUpcoming()
-    }, 500);
+    }, 700);
   }, [])
 
   const getAnimeUpcoming = async () => {

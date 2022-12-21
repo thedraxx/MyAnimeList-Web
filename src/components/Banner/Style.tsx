@@ -7,6 +7,12 @@ export const Container = styled.div`
     display: flex;
     flex-direction: row; 
     margin-top: 25px;
+
+    @media (max-width: 768px) {
+        margin-left: 0px;
+        margin-top: 20px;
+        flex-direction: column;
+    }
 `;
 
 export const Image = styled.img`

@@ -1,18 +1,19 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { Button, ButtonImage, ContainerBanner, ContainerButtons, ContainerImageInfo, ContainerText, CustomImageGalery, TextInfo, TextTitle } from './Style';
 import { AnimeTopsInterface } from '../../interfaces/GetAnimeTopsInterface';
 import animeAPI from '../../api/AnimeAPI';
 import Loading from '../Loading/Loading';
 import { useNavigate } from 'react-router-dom';
 import { FaAngleRight,FaAngleLeft } from "react-icons/fa";
+import { FetchContext } from '../../context/FetchContext';
 
 const Carrousel = (): JSX.Element => {
     const [AnimeBanner, setAnimeBanner] = useState<AnimeTopsInterface>();
     const [increment, setIncrement] = useState<number>(0);
     const [disabled, setDisabled] = useState<boolean>(false);
     const [disabledMinus, setDisabledMinus] = useState<boolean>(false);
-    
     const navigate = useNavigate();
+    const {HandleFetchCarrousel} = useContext(FetchContext)
 
     const colors = [
         '#ff2424',
@@ -25,9 +26,8 @@ const Carrousel = (): JSX.Element => {
     ]
 
     useEffect(() => {
-        setTimeout(() => {
-            getAnimeTops()
-        }, 500);
+        HandleFetchCarrousel(false);
+        getAnimeTops()
     }, [])
 
     const incrementor = () => {
@@ -57,6 +57,7 @@ const Carrousel = (): JSX.Element => {
         try {
             const resp = await animeAPI.get('top/anime');
             setAnimeBanner(resp.data);
+            HandleFetchCarrousel(true);
         } catch (error) {
             console.log({ error });
         }

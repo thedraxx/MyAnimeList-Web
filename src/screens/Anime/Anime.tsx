@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import {useParams } from 'react-router-dom';
 import { Datum } from '../../interfaces/GetAnimeTopsInterface';
 import { ContainerAnime, ContainerGenre, ContainerInfo, ContainerLeft, ContainerSimilarAnimes, ContainerStars, ContainerSynopsis, ContainerTextGenre, ContainerVideo, DivNothing, SuperContainerInfoAnime, TextEpisodes, TextGenre, TextMedia, TextName, TextSynopsis } from './Style';
@@ -8,12 +8,15 @@ import SimilarAnimes from '../../components/SimilarAnimes/SimilarAnimes';
 import animeAPI from '../../api/AnimeAPI';
 import Loading from '../../components/Loading/Loading';
 import { AiFillStar } from 'react-icons/ai';
+import { FetchContext } from '../../context/FetchContext';
 
 const Anime = () => {
   const [animeInfo, setAnimeInfo] = useState<Datum>()
   const { id } = useParams();
+  const {HandleAnimeFetch} = useContext(FetchContext)
 
   useEffect(() => {
+    HandleAnimeFetch(false);
     getAnime()
   }, [id])
 
@@ -22,6 +25,7 @@ const Anime = () => {
     try {
       const resp = await animeAPI.get(`anime/${id}`);
       setAnimeInfo(resp.data.data);
+      HandleAnimeFetch(true);
     } catch (error) {
       console.log({ error });
     }

@@ -33,7 +33,8 @@ export const ContainerAnimeLikeThis = styled.div`
 
 
 export const Image = styled.img`
-    width: 70%;
+    width: 300px;
+    height: auto;
     height: auto;
     border-radius: 5px;
 
@@ -47,7 +48,7 @@ export const Button = styled.button`
     height: 100%;
     border: none;
     background-color: transparent;
-    padding: 1rem;
+    padding: 0.5rem;
     cursor: pointer;
 
     @media (max-width: 1600px) {

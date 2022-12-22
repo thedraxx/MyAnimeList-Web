@@ -9,6 +9,9 @@ const Banner = () => {
     const [AnimeBanner, setAnimeBanner] = useState<AnimeRecomendations>()
     const navigate = useNavigate();
 
+    const addParams = (id: number) => {
+      navigate(`/anime/${id}`);
+    }
     useEffect(() => {
         setTimeout(() => {
             getAnimeBanner()
@@ -29,11 +32,9 @@ const Banner = () => {
                 !AnimeBanner ? <Loading /> : (
                     <Container>
                         <Button
-                            onClick={() => navigate("/Anime", { 
-                                state: {
-                                    anime: AnimeBanner?.data[0].entry[0].mal_id
-                                }
-                            })}
+                            onClick={
+                                () => addParams(AnimeBanner?.data[0].entry[0].mal_id)
+                            }
                         >
                         <Image src={AnimeBanner?.data[0].entry[0].images.webp.large_image_url} alt={AnimeBanner?.data[0].entry[0].title} />
                         </Button>

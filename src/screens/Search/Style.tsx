@@ -14,6 +14,13 @@ export const ContainerSearch = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    @media (min-width: 268px)  and (max-width: 1024px) {
+        align-items: left;
+        justify-content: left;
+        align-self: left;
+        padding-left: 0px;
+    }
 `;
 
 export const Inputs = styled.input`
@@ -31,8 +38,12 @@ export const Inputs = styled.input`
     ::placeholder {
         color: ${Colors.white};
         font-size: 1.5rem;
+    }   
+
+    @media (min-width: 268px)  and (max-width: 1024px) {
+        width: 90%;
     }
-    
+
 `
 export const Button = styled.input`
     width: 100%;
@@ -65,5 +76,9 @@ export const Border = styled.div<Props>`
     height: 0.2rem;
     background-color: ${props => props.isEnter ? Colors.secondary : Colors.search};
     margin-bottom: 1rem;
+
+    @media (min-width: 268px)  and (max-width: 1024px) {
+        width: 90%;
+    }
     
 `

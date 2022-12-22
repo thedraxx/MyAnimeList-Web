@@ -1,7 +1,8 @@
 import React from 'react'
 import { Button, ContainerLogo, ContainerNavBar, Text } from './Style'
 import { IonIcon } from '@ionic/react'
-import { useParams, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { FaSearch } from "react-icons/fa";
 
 const Navbar = () => {
 
@@ -23,7 +24,7 @@ const Navbar = () => {
                 navigate('/search')
               }}
       >
-      <IonIcon name="search" color='light'/>
+      <FaSearch color="white"/>
       </Button>
     </ContainerNavBar>
   )

@@ -11,7 +11,7 @@ const Carrousel = (): JSX.Element => {
     const [increment, setIncrement] = useState<number>(0);
     const [disabled, setDisabled] = useState<boolean>(false);
     const [disabledMinus, setDisabledMinus] = useState<boolean>(false);
-
+    
     const navigate = useNavigate();
 
     const colors = [
@@ -60,6 +60,11 @@ const Carrousel = (): JSX.Element => {
         }
     };
 
+    const addParams = (id: number) => {
+        navigate(`/anime/${id}`);
+    }
+    
+
 
     return (
         !AnimeBanner ? <Loading /> : (
@@ -78,12 +83,9 @@ const Carrousel = (): JSX.Element => {
                 </ContainerButtons>
 
                 <ContainerImageInfo>
-                    <ButtonImage onClick={() => navigate("/Anime", { 
-                        state: {
-                            anime: AnimeBanner.data[increment].mal_id
-                        }
-
-                    })}>
+                    <ButtonImage 
+                        onClick={() => addParams(AnimeBanner.data[increment].mal_id)}
+                    >
                         <CustomImageGalery src={AnimeBanner.data[increment].images.webp.large_image_url} alt="Anime Banner" />
                     </ButtonImage>
                     <ContainerText>

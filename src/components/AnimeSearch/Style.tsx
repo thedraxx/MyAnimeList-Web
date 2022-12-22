@@ -19,7 +19,7 @@ export const ContainerAnimeLikeThis = styled.div`
     margin: 1rem 0;
     padding: 1rem;
     background-color: ${Colors.tertiary};
-    border-radius: 10px;
+    border-radius: 15px;
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
     justify-items: center;
     align-items: center;
@@ -33,7 +33,7 @@ export const ContainerAnimeLikeThis = styled.div`
 
 
 export const Image = styled.img`
-    width: 50%;
+    width: 70%;
     height: auto;
     border-radius: 5px;
 

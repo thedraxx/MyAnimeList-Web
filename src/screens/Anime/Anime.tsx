@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom';
+import {useParams } from 'react-router-dom';
 import { Datum } from '../../interfaces/GetAnimeTopsInterface';
 import { ContainerAnime, ContainerGenre, ContainerInfo, ContainerLeft, ContainerSimilarAnimes, ContainerStars, ContainerSynopsis, ContainerTextGenre, ContainerVideo, DivNothing, SuperContainerInfoAnime, TextEpisodes, TextGenre, TextMedia, TextName, TextSynopsis } from './Style';
 import CarrouselAnime from '../../components/Cover/Cover';
@@ -9,30 +9,25 @@ import animeAPI from '../../api/AnimeAPI';
 import Loading from '../../components/Loading/Loading';
 import { AiFillStar } from 'react-icons/ai';
 
-interface CustomizedState {
-  anime: string /* Recibe Id of the ANIME */
-}
-
 const Anime = () => {
   const [animeInfo, setAnimeInfo] = useState<Datum>()
-  const location = useLocation()
-  const state = location.state as CustomizedState
-
-  console.log(state.anime)
+  const { id } = useParams();
 
   useEffect(() => {
     getAnime()
-  }, [state])
+  }, [id])
 
 
   const getAnime = async () => {
     try {
-      const resp = await animeAPI.get(`anime/${state.anime}`);
+      const resp = await animeAPI.get(`anime/${id}`);
       setAnimeInfo(resp.data.data);
     } catch (error) {
       console.log({ error });
     }
   }
+
+
 
   return (
     <>

@@ -10,6 +10,12 @@ export interface Anime {
 
 const List = ({ Anime }: Anime) => {
   const navigate = useNavigate();
+
+  const addParams = (id: number) => {
+    navigate(`/anime/${id}`);
+  }
+  
+
   const settings = {
     className: "center",
     infinite: true,
@@ -46,12 +52,9 @@ const List = ({ Anime }: Anime) => {
       <Slider {...settings}>
         {Anime.map((anime) => (
           <DivList key={anime.mal_id}>
-            <Button onClick={() => navigate("/Anime", {
-              state: {
-                anime: anime.mal_id
-              }
-
-            })}>
+            <Button
+              onClick={() => addParams(anime.mal_id)}
+            >
               <ImageList src={anime.images.webp.large_image_url} alt={anime.title} />
               <TitleAnime>{anime.title.substring(0,50).concat('...')}</TitleAnime>
             </Button>

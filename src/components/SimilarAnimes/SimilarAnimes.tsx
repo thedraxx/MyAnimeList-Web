@@ -14,6 +14,10 @@ const SimilarAnimes = (animes: Animes) => {
   const [anime, setAnime] = useState<AnimeRecomends>()
   const navigate = useNavigate();
 
+  const addParams = (id: number) => {
+    navigate(`/anime/${id}`);
+  }
+
   useEffect(() => {
     setTimeout(() => {
       getAnimeLikeThis();
@@ -39,13 +43,7 @@ const SimilarAnimes = (animes: Animes) => {
           !anime ? <Loading /> : (
             anime.data.map((anime, index) => {
               return (
-                <Button
-                  onClick={() => navigate("/Anime", {
-                    state: {
-                      anime: anime.entry.mal_id
-                    }
-                  })}
-                >
+                <Button onClick={() => {addParams(anime.entry.mal_id)}}>
                   <Image key={index} src={anime.entry.images.webp.large_image_url} alt={anime.entry.title} />
                 </Button>
               )

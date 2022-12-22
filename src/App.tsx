@@ -11,7 +11,7 @@ const App = () => {
         element={<Home />}
       />
       <Route
-        path='/Anime'
+        path='/Anime/:id'
         element={<Anime  />}
       />
        <Route

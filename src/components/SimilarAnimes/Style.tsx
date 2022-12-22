@@ -16,8 +16,8 @@ export const ContainerAnimeLikeThis = styled.div`
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 1rem;
-    margin: 1rem 0;
-    padding: 0.5rem;
+    margin: 0.5rem 0;
+    padding: 2rem;
     background-color: #040404;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
@@ -33,6 +33,10 @@ export const ContainerAnimeLikeThis = styled.div`
 export const Image = styled.img`
     width: 65%;
     border-radius: 5px;
+
+    @media (min-width: 268px) and (max-width: 1600px) {
+        width: 100%;
+    }
 `
 
 export const Button = styled.button`    
@@ -41,10 +45,12 @@ export const Button = styled.button`
     border: none;
     background-color: transparent;
     cursor: pointer;
+
+
     &:hover{
         background-color: ${Colors.search};
         border-radius: 5px;
-        padding: 0.5rem;
+        padding: 0rem;
     }
 
     &:transition{

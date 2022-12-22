@@ -51,9 +51,6 @@ const SimilarAnimes = (animes: Animes) => {
               )
             })
           )
-
-
-
         }
       </ContainerAnimeLikeThis>
     </SuperContainer>

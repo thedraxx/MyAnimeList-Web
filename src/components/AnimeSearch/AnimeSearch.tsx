@@ -14,7 +14,11 @@ const AnimeSearch = ({ name, PressEnter }: AnimeSearchProps) => {
     const [animeSearchNow, setAnimeSearchNow] = useState<DatumSearch[]>()
     const navigate = useNavigate();
 
-    console.log(typeof name)
+    const addParams = (id: number) => {
+        navigate(`/anime/${id}`);
+    }
+    
+
 
     useEffect(() => {
         if (PressEnter){
@@ -36,11 +40,9 @@ const AnimeSearch = ({ name, PressEnter }: AnimeSearchProps) => {
                         animeSearchNow?.map((anime, index) => {
                             return (
                                 <Button
-                                    onClick={() => navigate("/Anime", {
-                                        state: {
-                                            anime: anime.mal_id
-                                        }
-                                    })}
+                                    onClick={
+                                        () => addParams(anime.mal_id)
+                                    }
                                 >
                                     <Image key={anime.mal_id} src={anime.images.webp.large_image_url} alt={anime.title} />
                                     <Title>{anime.title}</Title>

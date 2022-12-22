@@ -11,7 +11,7 @@ const TopAnime = () => {
   useEffect(() => {
     setTimeout(() => {
       getAnimeTops()
-    }, 1000);
+    }, 2000);
   }, [])
 
   const getAnimeTops = async () => {

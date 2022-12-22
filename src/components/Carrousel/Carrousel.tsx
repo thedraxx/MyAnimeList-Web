@@ -25,7 +25,9 @@ const Carrousel = (): JSX.Element => {
     ]
 
     useEffect(() => {
-        getAnimeTops()
+        setTimeout(() => {
+            getAnimeTops()
+        }, 500);
     }, [])
 
     const incrementor = () => {
